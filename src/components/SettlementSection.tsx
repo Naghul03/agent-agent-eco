@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import confetti from 'canvas-confetti';
+import React from 'react';
 import { 
   DollarSign, 
   CheckCircle2, 
@@ -27,21 +26,6 @@ export const SettlementSection: React.FC<SettlementSectionProps> = ({
   task,
   onResetDemo,
 }) => {
-  useEffect(() => {
-    if (settlement.isSuccess) {
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#ef4444', '#10b981', '#f59e0b', '#3b82f6'],
-        });
-      } catch (err) {
-        console.log('Confetti trigger optional');
-      }
-    }
-  }, [settlement.isSuccess]);
-
   return (
     <div className="bg-[#121217] border border-[#23232e] rounded-2xl p-6 shadow-2xl mb-6 relative overflow-hidden">
       {/* Top Banner */}
@@ -147,15 +131,7 @@ export const SettlementSection: React.FC<SettlementSectionProps> = ({
         </div>
       </div>
 
-      {/* Prompt Requirement: Prominent Final Visual Banner */}
-      <div className="bg-gradient-to-r from-red-600 via-red-700 to-amber-600 rounded-2xl p-6 text-center text-white shadow-2xl shadow-red-900/40 glow-red mb-6 space-y-2">
-        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight">
-          No human approval required.
-        </h3>
-        <p className="text-xs text-red-100 font-mono max-w-xl mx-mx-auto">
-          The entire transaction, financial risk assessment, collateral locking, blind jury verification, and wallet settlement executed 100% autonomously.
-        </p>
-      </div>
+
 
       <button
         onClick={onResetDemo}
